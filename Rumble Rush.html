@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rumble Rush: Exciting Online Multiplayer Racing Game</title>
+    <meta name="description" content="Play Rumble Rush, the exciting multiplayer knockout obstacle course game. Compete with players worldwide in thrilling races filled with fun and chaos.">
+    <link rel="canonical" href="https://rumble-rush.com/">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'apple-blue': '#007AFF',
+                        'apple-gray': '#8A8A8E',
+                        'apple-light-gray': '#F5F5F7',
+                        'apple-dark': '#1D1D1F'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: linear-gradient(to bottom, #FFFFFF, #F5F5F7);
+            min-height: 100vh;
+        }
+        
+        .logo {
+            font-weight: 700;
+            background: linear-gradient(90deg, #007AFF 0%, #00C2FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .game-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .game-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .comment-box {
+            transition: all 0.3s ease;
+        }
+        
+        .comment-box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #007AFF 0%, #00C2FF 100%);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(90deg, #007AFF 0%, #00C2FF 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 122, 255, 0.4);
+        }
+        
+        .carousel {
+            scroll-behavior: smooth;
+            scrollbar-width: none; /* Firefox */
+        }
+        
+        .carousel::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Edge */
+        }
+        
+        /* Animation for the hero section */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="text-apple-dark">
+    <!-- Header/Navigation -->
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="https://onlinegamedayday.com/Rumble%20Rush1.png" alt="Rumble Rush Logo" class="h-10 w-10 mr-3 rounded-lg">
+                <span class="logo text-2xl">Rumble Rush</span>
+            </div>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="#game" class="text-apple-gray hover:text-apple-blue transition-colors">Play</a>
+                <a href="#about" class="text-apple-gray hover:text-apple-blue transition-colors">About</a>
+                <a href="#how-to-play" class="text-apple-gray hover:text-apple-blue transition-colors">How to Play</a>
+                <a href="#forum" class="text-apple-gray hover:text-apple-blue transition-colors">Community</a>
+            </nav>
+            
+            <button class="md:hidden text-apple-gray">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="container mx-auto px-4 py-16 md:py-24 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Rumble Rush: Exciting Online Multiplayer Racing Game</h1>
+                <p class="text-lg text-apple-gray mb-8">Stumble, fall, and conquer in the ultimate multiplayer knockout obstacle course game!</p>
+                <a href="#game" class="btn-primary text-white font-semibold py-3 px-8 rounded-full inline-flex items-center">
+                    Play Now <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+            
+            <div class="md:w-1/2 flex justify-center">
+                <img src="https://onlinegamedayday.com/Rumble%20Rush2.png" alt="Rumble Rush Game Scene" class="floating rounded-2xl shadow-2xl w-full max-w-md">
+            </div>
+        </section>
+
+        <!-- Game Introduction -->
+        <section id="about" class="bg-apple-light-gray py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-12 text-center">The Ultimate Knockout Racing Experience</h2>
+                
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <p class="text-lg mb-6">Get ready to stumble, fall, and conquer in Rumble Rush, the multiplayer knockout obstacle course game! Compete with players worldwide in thrilling races filled with fun, chaos, and surprises.</p>
+                        <p class="text-lg mb-6">With innovative mechanics and unique power-up items, Rumble Rush delivers a fresh twist to the racing genre that you won't find anywhere else. 🚀</p>
+                        <p class="text-lg">Run, jump, fall, and navigate wild obstacle courses as you battle it out against other players in real-time multiplayer action. 💥 Every race is a new challenge!</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="https://onlinegamedayday.com/Rumble%20Rush3.png" alt="Rumble Rush Gameplay 1" class="rounded-2xl shadow-lg">
+                        <img src="https://onlinegamedayday.com/Rumble%20Rush4.png" alt="Rumble Rush Gameplay 2" class="rounded-2xl shadow-lg mt-8">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Game Iframe -->
+        <section id="game" class="py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-6 text-center">Play Rumble Rush Online</h2>
+                <p class="text-apple-gray text-center mb-12 max-w-2xl mx-auto">Jump right into the action! Play our exciting multiplayer game directly in your browser. No downloads required.</p>
+                
+                <div class="max-w-4xl mx-auto">
+                    <div class="game-container">
+                        <iframe src="https://rumblerush.io/" allow="fullscreen" allowfullscreen></iframe>
+                    </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How to Play -->
+        <section id="how-to-play" class="bg-apple-light-gray py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-12 text-center">How to Play Rumble Rush</h2>
+                
+                <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                    <div class="bg-white p-6 rounded-2xl shadow-sm text-center">
+                        <div class="gradient-bg w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-directions text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">Movement</h3>
+                        <p class="text-apple-gray">Use <kbd class="px-2 py-1 bg-gray-100 rounded">WASD</kbd> or <kbd class="px-2 py-1 bg-gray-100 rounded">Arrow Keys</kbd> to move your character</p>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-2xl shadow-sm text-center">
+                        <div class="gradient-bg w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-mouse-pointer text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">Camera Control</h3>
+                        <p class="text-apple-gray">Use the mouse to adjust the camera angle and get the best view</p>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-2xl shadow-sm text-center">
+                        <div class="gradient-bg w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-arrow-up text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">Jump</h3>
+                        <p class="text-apple-gray">Press <kbd class="px-2 py-1 bg-gray-100 rounded">Spacebar</kbd> to jump over obstacles and pitfalls</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Forum Section -->
+        <section id="forum" class="py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-6 text-center">Community Forum</h2>
+                <p class="text-apple-gray text-center mb-12 max-w-2xl mx-auto">Share your experiences, strategies, and feedback with other Rumble Rush players. No registration required!</p>
+                
+                <div class="max-w-3xl mx-auto">
+                    <!-- Comment Form -->
+                    <div class="bg-white rounded-2xl shadow-sm p-6 mb-8">
+                        <h3 class="text-xl font-semibold mb-4">Post a Comment</h3>
+                        <form id="comment-form">
+                            <div class="mb-4">
+                                <label for="name" class="block text-sm font-medium text-apple-gray mb-1">Name (optional)</label>
+                                <input type="text" id="name" class="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-apple-blue focus:outline-none">
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="comment" class="block text-sm font-medium text-apple-gray mb-1">Your Comment *</label>
+                                <textarea id="comment" rows="4" required class="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-apple-blue focus:outline-none"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn-primary text-white font-semibold py-3 px-6 rounded-xl">
+                                Post Comment
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <!-- Comments List -->
+                    <div id="comments-container">
+                        <h3 class="text-xl font-semibold mb-6">Recent Comments</h3>
+                        <div id="comments-list">
+                            <!-- Comments will be loaded here -->
+                        </div>
+                        
+                        <div id="load-more-container" class="text-center mt-8 hidden">
+                            <button id="load-more" class="text-apple-blue font-semibold">
+                                Load More Comments <i class="fas fa-chevron-down ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-apple-light-gray py-12 border-t border-gray-200">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center">
+                        <img src="https://onlinegamedayday.com/Rumble%20Rush1.png" alt="Rumble Rush Logo" class="h-8 w-8 mr-2 rounded">
+                        <span class="logo text-xl">Rumble Rush</span>
+                    </div>
+                    <p class="text-apple-gray text-sm mt-2">© 2023 Rumble Rush. All rights reserved.</p>
+                </div>
+                
+                <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8 text-center md:text-left">
+                    <a href="#" class="text-apple-gray hover:text-apple-blue transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-apple-gray hover:text-apple-blue transition-colors">Terms of Service</a>
+                    <a href="#" class="text-apple-gray hover:text-apple-blue transition-colors">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple forum functionality with localStorage
+        document.addEventListener('DOMContentLoaded', function() {
+            const commentForm = document.getElementById('comment-form');
+            const commentsList = document.getElementById('comments-list');
+            const loadMoreContainer = document.getElementById('load-more-container');
+            const loadMoreButton = document.getElementById('load-more');
+            
+            // Bad words filter (simplified example)
+            const badWords = ['badword1', 'badword2', 'insult', 'hate']; // Extend this list as needed
+            
+            // Function to check for bad words
+            function containsBadWords(text) {
+                return badWords.some(word => text.toLowerCase().includes(word));
+            }
+            
+            // Function to load comments
+            function loadComments(limit = 50, offset = 0) {
+                let comments = JSON.parse(localStorage.getItem('rumble-rush-comments') || '[]');
+                
+                // Reverse to show latest first
+                comments.reverse();
+                
+                // Apply limit and offset
+                const displayedComments = comments.slice(offset, offset + limit);
+                
+                // Clear comments list if loading from beginning
+                if (offset === 0) {
+                    commentsList.innerHTML = '';
+                }
+                
+                if (comments.length === 0) {
+                    commentsList.innerHTML = '<p class="text-apple-gray text-center py-8">No comments yet. Be the first to share your thoughts!</p>';
+                    return;
+                }
+                
+                displayedComments.forEach(comment => {
+                    const commentElement = document.createElement('div');
+                    commentElement.className = 'comment-box bg-white rounded-2xl shadow-sm p-6 mb-6';
+                    commentElement.innerHTML = `
+                        <div class="flex justify-between items-start mb-3">
+                            <h4 class="font-semibold">${comment.name || 'Anonymous'}</h4>
+                            <span class="text-sm text-apple-gray">${new Date(comment.timestamp).toLocaleDateString()}</span>
+                        </div>
+                        <p class="text-apple-gray mb-4">${comment.text}</p>
+                        <button class="reply-btn text-sm text-apple-blue font-semibold">Reply</button>
+                        
+                        <div class="reply-form mt-4 hidden">
+                            <textarea class="w-full p-3 border border-gray-200 rounded-xl mb-2" placeholder="Write your reply..."></textarea>
+                            <button class="submit-reply bg-apple-blue text-white font-semibold py-2 px-4 rounded-xl text-sm">Post Reply</button>
+                        </div>
+                    `;
+                    
+                    commentsList.appendChild(commentElement);
+                });
+                
+                // Show load more button if there are more comments
+                if (comments.length > offset + limit) {
+                    loadMoreContainer.classList.remove('hidden');
+                    loadMoreButton.dataset.offset = offset + limit;
+                } else {
+                    loadMoreContainer.classList.add('hidden');
+                }
+            }
+            
+            // Handle comment form submission
+            commentForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const nameInput = document.getElementById('name');
+                const commentInput = document.getElementById('comment');
+                
+                const name = nameInput.value.trim();
+                const text = commentInput.value.trim();
+                
+                if (!text) {
+                    alert('Please enter a comment');
+                    return;
+                }
+                
+                // Check for bad words
+                if (containsBadWords(text) || (name && containsBadWords(name))) {
+                    alert('Your comment contains inappropriate language. Please revise your message.');
+                    return;
+                }
+                
+                // Create comment object
+                const comment = {
+                    name: name || undefined,
+                    text: text,
+                    timestamp: new Date().toISOString()
+                };
+                
+                // Save to localStorage
+                let comments = JSON.parse(localStorage.getItem('rumble-rush-comments') || '[]');
+                comments.push(comment);
+                localStorage.setItem('rumble-rush-comments', JSON.stringify(comments));
+                
+                // Clear form
+                nameInput.value = '';
+                commentInput.value = '';
+                
+                // Reload comments
+                loadComments();
+            });
+            
+            // Handle reply buttons (delegation)
+            commentsList.addEventListener('click', function(e) {
+                if (e.target.classList.contains('reply-btn')) {
+                    const replyForm = e.target.nextElementSibling;
+                    replyForm.classList.toggle('hidden');
+                }
+                
+                if (e.target.classList.contains('submit-reply')) {
+                    // In a real application, this would submit to a server
+                    alert('Replies would be stored on a server in a full implementation. This is a frontend demo.');
+                    e.target.closest('.reply-form').classList.add('hidden');
+                }
+            });
+            
+            // Handle load more button
+            loadMoreButton.addEventListener('click', function() {
+                const offset = parseInt(this.dataset.offset || '0');
+                loadComments(50, offset);
+            });
+            
+            // Initial load of comments
+            loadComments();
+        });
+    </script>
+</body>
+</html>
