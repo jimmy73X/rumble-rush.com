@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rumble Rush: エキサイティングなオンラインマルチプレイヤーレーシングゲーム</title>
+    <meta name="description" content="Rumble Rushでつまずき、転び、征服しよう！世界中のプレイヤーと対戦するマルチプレイヤーKnockout障害物コースゲームです。">
+    <meta name="keywords" content="Rumble Rush, Rumble Rush online, Rumble Rush Poki">
+    <link rel="canonical" href="https://rumble-rush.com/">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'apple-blue': '#007AFF',
+                        'apple-gray': '#8A8A8E',
+                        'apple-light-gray': '#F5F5F7',
+                        'apple-dark': '#1D1D1F'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
+            background: linear-gradient(to bottom, #FFFFFF, #F5F5F7);
+            min-height: 100vh;
+        }
+        
+        .logo {
+            font-weight: 700;
+            background: linear-gradient(90deg, #007AFF 0%, #00C2FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .game-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 85%;
+            overflow: hidden;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+        
+        .game-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .comment-box {
+            transition: all 0.3s ease;
+        }
+        
+        .comment-box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #007AFF 0%, #00C2FF 100%);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(90deg, #007AFF 0%, #00C2FF 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 122, 255, 0.4);
+        }
+        
+        /* Animation for the hero section */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Responsive adjustments for game container */
+        @media (max-width: 768px) {
+            .game-container {
+                padding-bottom: 95%;
+                border-radius: 12px;
+            }
+        }
+        
+        @media (min-width: 1600px) {
+            .game-container {
+                padding-bottom: 80%;
+            }
+        }
+
+        /* ゲームコントロールのヒントスタイル */
+        .control-tip {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            position: absolute;
+            z-index: 10;
+            bottom: 20px;
+            right: 20px;
+        }
+    </style>
+</head>
+<body class="text-apple-dark">
+    <!-- Header/Navigation -->
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="https://onlinegamedayday.com/Rumble%20Rush1.png" alt="Rumble Rushロゴ" class="h-10 w-10 mr-3 rounded-lg">
+                <span class="logo text-2xl">Rumble Rush</span>
+            </div>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="#game" class="text-apple-gray hover:text-apple-blue transition-colors">プレイ</a>
+                <a href="#about" class="text-apple-gray hover:text-apple-blue transition-colors">ゲーム紹介</a>
+                <a href="#how-to-play" class="text-apple-gray hover:text-apple-blue transition-colors">遊び方</a>
+                <a href="#forum" class="text-apple-gray hover:text-apple-blue transition-colors">コミュニティ</a>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <a href="https://rumble-rush.com/privacy" class="text-apple-gray hover:text-apple-blue transition-colors">プライバシーポリシー</a>
+                <a href="https://rumble-rush.com/terms" class="text-apple-gray hover:text-apple-blue transition-colors">利用規約</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="container mx-auto px-4 py-16 md:py-24 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Rumble Rush: エキサイティングなオンラインマルチプレイヤーレーシングゲーム</h1>
+                <p class="text-lg text-apple-gray mb-8">つまずき、転び、征服しよう！Rumble Rushは、マルチプレイヤーKnockout障害物コースゲームの頂点です！</p>
+                <a href="#game" class="btn-primary text-white font-semibold py-3 px-8 rounded-full inline-flex items-center">
+                    今すぐプレイ <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+            
+            <div class="md:w-1/2 flex justify-center">
+                <img src="https://onlinegamedayday.com/Rumble%20Rush2.png" alt="Rumble Rushゲームシーン" class="floating rounded-2xl shadow-2xl w-full max-w-md">
+            </div>
+        </section>
+
+        <!-- Game Introduction -->
+        <section id="about" class="bg-apple-light-gray py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-12 text-center">究極のKnockoutレーシング体験</h2>
+                
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <p class="text-lg mb-6">Rumble Rushでつまずき、転び、征服する準備をしよう！これはマルチプレイヤーKnockout障害物コースゲームです。世界中のプレイヤーと、楽しさ、カオス、驚きに満ちたスリリングなレースで競おう。</p>
+                        <p class="text-lg mb-6">革新的なメカニクスとユニークなパワーアップアイテムにより、Rumble Rushはレースジャンルに他では見られない新鮮な趣きをもたらします。🚀</p>
+                        <p class="text-lg">他のプレイヤーとリアルタイムマルチプレイヤーアクションで戦いながら、野生の障害物コースを走り、跳び、転び、進もう。💥 すべてのレースが新たな挑戦です！</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="https://onlinegamedayday.com/Rumble%20Rush3.png" alt="Rumble Rushゲームプレイ1" class="rounded-2xl shadow-lg">
+                        <img src="https://onlinegamedayday.com/Rumble%20Rush4.png" alt="Rumble Rushゲームプレイ2" class="rounded-2xl shadow-lg mt-8">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Game Iframe -->
+        <section id="game" class="py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-6 text-center">Rumble Rushをオンラインでプレイ</h2>
+                <p class="text-apple-gray text-center mb-12 max-w-2xl mx-auto">すぐにアクションに飛び込もう！ブラウザで直接エキサイティングなマルチプレイヤーゲームをプレイできます。ダウンロードは必要ありません。</p>
+                
+                <div class="max-w-6xl mx-auto relative">
+                    <div class="game-container">
+                        <iframe src="https://rumblerush.io/" allow="fullscreen" allowfullscreen></iframe>
+                        <div class="control-tip">
+                            <i class="fas fa-expand mr-2"></i> ダブルクリックでフルスクリーン
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-center mt-6">
+                        <a href="https://rumblerush.io/" target="_blank" class="btn-primary text-white font-semibold py-3 px-8 rounded-full inline-flex items-center">
+                            フルスクリーンでゲームを開く <i class="fas fa-external-link-alt ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How to Play -->
+        <section id="how-to-play" class="bg-apple-light-gray py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-12 text-center">Rumble Rushの遊び方</h2>
+                
+                <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                    <div class="bg-white p-6 rounded-2xl shadow-sm text-center">
+                        <div class="gradient-bg w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-directions text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">移動</h3>
+                        <p class="text-apple-gray"><kbd class="px-2 py-1 bg-gray-100 rounded">WASD</kbd> または <kbd class="px-2 py-1 bg-gray-100 rounded">矢印キー</kbd> を使用してキャラクターを移動</p>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-2xl shadow-sm text-center">
+                        <div class="gradient-bg w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-mouse-pointer text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">カメラ操作</h3>
+                        <p class="text-apple-gray">マウスを使用してカメラ角度を調整し、最高のビューを確保</p>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-2xl shadow-sm text-center">
+                        <div class="gradient-bg w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-arrow-up text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">ジャンプ</h3>
+                        <p class="text-apple-gray"><kbd class="px-2 py-1 bg-gray-100 rounded">スペースバー</kbd> を押して障害物と落とし穴を飛び越える</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Forum Section -->
+        <section id="forum" class="py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-6 text-center">コミュニティフォーラム</h2>
+                <p class="text-apple-gray text-center mb-12 max-w-2xl mx-auto">他のRumble Rushプレイヤーと経験、戦略、フィードバックを共有しましょう。登録は必要ありません！</p>
+                
+                <div class="max-w-3xl mx-auto">
+                    <!-- Comment Form -->
+                    <div class="bg-white rounded-2xl shadow-sm p-6 mb-8">
+                        <h3 class="text-xl font-semibold mb-4">コメントを投稿</h3>
+                        <form id="comment-form">
+                            <div class="mb-4">
+                                <label for="name" class="block text-sm font-medium text-apple-gray mb-1">名前（任意）</label>
+                                <input type="text" id="name" class="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-apple-blue focus:outline-none">
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="comment" class="block text-sm font-medium text-apple-gray mb-1">コメント *</label>
+                                <textarea id="comment" rows="4" required class="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-apple-blue focus:outline-none"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn-primary text-white font-semibold py-3 px-6 rounded-xl">
+                                コメントを投稿
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <!-- Comments List -->
+                    <div id="comments-container">
+                        <h3 class="text-xl font-semibold mb-6">最近のコメント</h3>
+                        <div id="comments-list">
+                            <!-- コメントはここに読み込まれます -->
+                        </div>
+                        
+                        <div id="load-more-container" class="text-center mt-8 hidden">
+                            <button id="load-more" class="text-apple-blue font-semibold">
+                                さらにコメントを読み込む <i class="fas fa-chevron-down ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-apple-light-gray py-12 border-t border-gray-200">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center">
+                        <img src="https://onlinegamedayday.com/Rumble%20Rush1.png" alt="Rumble Rushロゴ" class="h-8 w-8 mr-2 rounded">
+                        <span class="logo text-xl">Rumble Rush</span>
+                    </div>
+                    <p class="text-apple-gray text-sm mt-2">© 2023 Rumble Rush. All rights reserved.</p>
+                </div>
+                
+                <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8 text-center md:text-left">
+                    <a href="https://rumble-rush.com/privacy" class="text-apple-gray hover:text-apple-blue transition-colors">プライバシーポリシー</a>
+                    <a href="https://rumble-rush.com/terms" class="text-apple-gray hover:text-apple-blue transition-colors">利用規約</a>
+                    <a href="mailto:support@rumble-rush.com" class="text-apple-gray hover:text-apple-blue transition-colors">お問い合わせ</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ローカルストレージを使用した簡易フォーラム機能
+        document.addEventListener('DOMContentLoaded', function() {
+            const commentForm = document.getElementById('comment-form');
+            const commentsList = document.getElementById('comments-list');
+            const loadMoreContainer = document.getElementById('load-more-container');
+            const loadMoreButton = document.getElementById('load-more');
+            
+            // 悪質な言葉のフィルター（簡易的な例）
+            const badWords = ['ばか', 'あほ', 'まぬけ', 'くそ', '死ね']; // 必要に応じてこのリストを拡張
+            
+            // 悪質な言葉をチェックする関数
+            function containsBadWords(text) {
+                return badWords.some(word => text.toLowerCase().includes(word));
+            }
+            
+            // コメントを読み込む関数
+            function loadComments(limit = 50, offset = 0) {
+                let comments = JSON.parse(localStorage.getItem('rumble-rush-comments') || '[]');
+                
+                // 最新を先頭に表示するために反転
+                comments.reverse();
+                
+                // 制限とオフセットを適用
+                const displayedComments = comments.slice(offset, offset + limit);
+                
+                // 最初から読み込む場合はコメントリストをクリア
+                if (offset === 0) {
+                    commentsList.innerHTML = '';
+                }
+                
+                if (comments.length === 0) {
+                    commentsList.innerHTML = '<p class="text-apple-gray text-center py-8">まだコメントはありません。最初のコメントを投稿しましょう！</p>';
+                    return;
+                }
+                
+                displayedComments.forEach(comment => {
+                    const commentElement = document.createElement('div');
+                    commentElement.className = 'comment-box bg-white rounded-2xl shadow-sm p-6 mb-6';
+                    commentElement.innerHTML = `
+                        <div class="flex justify-between items-start mb-3">
+                            <h4 class="font-semibold">${comment.name || '匿名'}</h4>
+                            <span class="text-sm text-apple-gray">${new Date(comment.timestamp).toLocaleDateString('ja-JP')}</span>
+                        </div>
+                        <p class="text-apple-gray mb-4">${comment.text}</p>
+                        <button class="reply-btn text-sm text-apple-blue font-semibold">返信</button>
+                        
+                        <div class="reply-form mt-4 hidden">
+                            <textarea class="w-full p-3 border border-gray-200 rounded-xl mb-2" placeholder="返信を書く..."></textarea>
+                            <button class="submit-reply bg-apple-blue text-white font-semibold py-2 px-4 rounded-xl text-sm">返信を投稿</button>
+                        </div>
+                    `;
+                    
+                    commentsList.appendChild(commentElement);
+                });
+                
+                // さらにコメントがある場合は「さらに読み込む」ボタンを表示
+                if (comments.length > offset + limit) {
+                    loadMoreContainer.classList.remove('hidden');
+                    loadMoreButton.dataset.offset = offset + limit;
+                } else {
+                    loadMoreContainer.classList.add('hidden');
+                }
+            }
+            
+            // コメントフォームの送信を処理
+            commentForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const nameInput = document.getElementById('name');
+                const commentInput = document.getElementById('comment');
+                
+                const name = nameInput.value.trim();
+                const text = commentInput.value.trim();
+                
+                if (!text) {
+                    alert('コメントを入力してください');
+                    return;
+                }
+                
+                // 悪質な言葉をチェック
+                if (containsBadWords(text) || (name && containsBadWords(name))) {
+                    alert('コメントに不適切な言葉が含まれています。内容を修正してください。');
+                    return;
+                }
+                
+                // コメントオブジェクトを作成
+                const comment = {
+                    name: name || undefined,
+                    text: text,
+                    timestamp: new Date().toISOString()
+                };
+                
+                // localStorageに保存
+                let comments = JSON.parse(localStorage.getItem('rumble-rush-comments') || '[]');
+                comments.push(comment);
+                localStorage.setItem('rumble-rush-comments', JSON.stringify(comments));
+                
+                // フォームをクリア
+                nameInput.value = '';
+                commentInput.value = '';
+                
+                // コメントを再読み込み
+                loadComments();
+            });
+            
+            // 返信ボタンを処理（委任）
+            commentsList.addEventListener('click', function(e) {
+                if (e.target.classList.contains('reply-btn')) {
+                    const replyForm = e.target.nextElementSibling;
+                    replyForm.classList.toggle('hidden');
+                }
+                
+                if (e.target.classList.contains('submit-reply')) {
+                    // 実際のアプリケーションでは、これはサーバーに送信されます
+                    alert('返信は完全な実装ではサーバーに保存されます。これはフロントエンドのデモです。');
+                    e.target.closest('.reply-form').classList.add('hidden');
+                }
+            });
+            
+            // 「さらに読み込む」ボタンを処理
+            loadMoreButton.addEventListener('click', function() {
+                const offset = parseInt(this.dataset.offset || '0');
+                loadComments(50, offset);
+            });
+            
+            // コメントの初期読み込み
+            loadComments();
+        });
+    </script>
+</body>
+</html>
