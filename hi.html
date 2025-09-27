@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rumble Rush: रोमांचक ऑनलाइन मल्टीप्लेयर रेसिंग गेम</title>
+    <meta name="description" content="Rumble Rush खेलें, रोमांचक मल्टीप्लेयर नॉकआउट ऑब्स्टेकल कोर्स गेम। दुनिया भर के खिलाड़ियों के साथ मजेदार और अराजकता से भरी दिलचस्प दौड़ में प्रतिस्पर्धा करें।">
+    <meta name="keywords" content="Rumble Rush, Rumble Rush online, Rumble Rush Poki">
+    <link rel="canonical" href="https://rumble-rush.com/">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'apple-blue': '#007AFF',
+                        'apple-gray': '#8A8A8E',
+                        'apple-light-gray': '#F5F5F7',
+                        'apple-dark': '#1D1D1F'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Hind Siliguri', 'Inter', 'Noto Sans Devanagari', sans-serif;
+            background: linear-gradient(to bottom, #FFFFFF, #F5F5F7);
+            min-height: 100vh;
+        }
+        
+        .logo {
+            font-weight: 700;
+            background: linear-gradient(90deg, #007AFF 0%, #00C2FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .game-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 85%;
+            overflow: hidden;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+        
+        .game-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .comment-box {
+            transition: all 0.3s ease;
+        }
+        
+        .comment-box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #007AFF 0%, #00C2FF 100%);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(90deg, #007AFF 0%, #00C2FF 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 122, 255, 0.4);
+        }
+        
+        /* Animation for the hero section */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Responsive adjustments for game container */
+        @media (max-width: 768px) {
+            .game-container {
+                padding-bottom: 95%;
+                border-radius: 12px;
+            }
+        }
+        
+        @media (min-width: 1600px) {
+            .game-container {
+                padding-bottom: 80%;
+            }
+        }
+
+        /* Game control tip styling */
+        .control-tip {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            position: absolute;
+            z-index: 10;
+            bottom: 20px;
+            right: 20px;
+        }
+    </style>
+</head>
+<body class="text-apple-dark">
+    <!-- Header/Navigation -->
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="https://onlinegamedayday.com/Rumble%20Rush1.png" alt="Rumble Rush लोगो" class="h-10 w-10 mr-3 rounded-lg">
+                <span class="logo text-2xl">Rumble Rush</span>
+            </div>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="#game" class="text-apple-gray hover:text-apple-blue transition-colors">खेलें</a>
+                <a href="#about" class="text-apple-gray hover:text-apple-blue transition-colors">गेम के बारे में</a>
+                <a href="#how-to-play" class="text-apple-gray hover:text-apple-blue transition-colors">कैसे खेलें</a>
+                <a href="#forum" class="text-apple-gray hover:text-apple-blue transition-colors">कम्युनिटी</a>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <a href="https://rumble-rush.com/privacy" class="text-apple-gray hover:text-apple-blue transition-colors">गोपनीयता नीति</a>
+                <a href="https://rumble-rush.com/terms" class="text-apple-gray hover:text-apple-blue transition-colors">सेवा की शर्तें</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="container mx-auto px-4 py-16 md:py-24 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Rumble Rush: रोमांचक ऑनलाइन मल्टीप्लेयर रेसिंग गेम</h1>
+                <p class="text-lg text-apple-gray mb-8">Rumble Rush में ठोकर खाने, गिरने और जीतने के लिए तैयार हो जाइए, यह एक मल्टीप्लेयर नॉकआउट ऑब्स्टेकल कोर्स गेम है!</p>
+                <a href="#game" class="btn-primary text-white font-semibold py-3 px-8 rounded-full inline-flex items-center">
+                    अभी खेलें <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+            
+            <div class="md:w-1/2 flex justify-center">
+                <img src="https://onlinegamedayday.com/Rumble%20Rush2.png" alt="Rumble Rush गेम दृश्य" class="floating rounded-2xl shadow-2xl w-full max-w-md">
+            </div>
+        </section>
+
+        <!-- Game Introduction -->
+        <section id="about" class="bg-apple-light-gray py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-12 text-center">अंतिम नॉकआउट रेसिंग अनुभव</h2>
+                
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <p class="text-lg mb-6">Rumble Rush में ठोकर खाने, गिरने और जीतने के लिए तैयार हो जाइए, यह एक मल्टीप्लेयर नॉकआउट ऑब्स्टेकल कोर्स गेम है! दुनिया भर के खिलाड़ियों के साथ मजेदार, अराजकता और आश्चर्य से भरी दिलचस्प दौड़ में प्रतिस्पर्धा करें।</p>
+                        <p class="text-lg mb-6">अभिनव मैकेनिक्स और अद्वितीय पावर-अप आइटम के साथ, Rumble Rush रेसिंग शैली में एक ताज़ा मोड़ प्रदान करता है जो आपको कहीं और नहीं मिलेगा। 🚀</p>
+                        <p class="text-lg">रियल-टाइम मल्टीप्लेयर एक्शन में अन्य खिलाड़ियों से लड़ते हुए जंगली ऑब्स्टेकल कोर्स के माध्यम से दौड़ें, कूदें, गिरें और नेविगेट करें। 💥 हर रेस एक नई चुनौती है!</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="https://onlinegamedayday.com/Rumble%20Rush3.png" alt="Rumble Rush गेमप्ले 1" class="rounded-2xl shadow-lg">
+                        <img src="https://onlinegamedayday.com/Rumble%20Rush4.png" alt="Rumble Rush गेमप्ले 2" class="rounded-2xl shadow-lg mt-8">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Game Iframe -->
+        <section id="game" class="py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-6 text-center">Rumble Rush ऑनलाइन खेलें</h2>
+                <p class="text-apple-gray text-center mb-12 max-w-2xl mx-auto">तुरंत एक्शन में कूदें! अपने ब्राउज़र में सीधे हमारे रोमांचक मल्टीप्लेयर गेम खेलें। किसी डाउनलोड की आवश्यकता नहीं है।</p>
+                
+                <div class="max-w-6xl mx-auto relative">
+                    <div class="game-container">
+                        <iframe src="https://rumblerush.io/" allow="fullscreen" allowfullscreen></iframe>
+                        <div class="control-tip">
+                            <i class="fas fa-expand mr-2"></i> फुलस्क्रीन के लिए डबल क्लिक करें
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-center mt-6">
+                        <a href="https://rumblerush.io/" target="_blank" class="btn-primary text-white font-semibold py-3 px-8 rounded-full inline-flex items-center">
+                            फुलस्क्रीन में गेम खोलें <i class="fas fa-external-link-alt ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How to Play -->
+        <section id="how-to-play" class="bg-apple-light-gray py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-12 text-center">Rumble Rush कैसे खेलें</h2>
+                
+                <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                    <div class="bg-white p-6 rounded-2xl shadow-sm text-center">
+                        <div class="gradient-bg w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-directions text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">चलना</h3>
+                        <p class="text-apple-gray"><kbd class="px-2 py-1 bg-gray-100 rounded">WASD</kbd> या <kbd class="px-2 py-1 bg-gray-100 rounded">दिशा कुंजियाँ</kbd> का उपयोग करके अपने कैरेक्टर को चलाएं</p>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-2xl shadow-sm text-center">
+                        <div class="gradient-bg w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-mouse-pointer text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">कैमरा नियंत्रण</h3>
+                        <p class="text-apple-gray">कैमरा कोण को समायोजित करने और सर्वोत्तम दृश्य प्राप्त करने के लिए माउस का उपयोग करें</p>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-2xl shadow-sm text-center">
+                        <div class="gradient-bg w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-arrow-up text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">कूदना</h3>
+                        <p class="text-apple-gray"><kbd class="px-2 py-1 bg-gray-100 rounded">स्पेसबार</kbd> दबाकर बाधाओं और जालों के ऊपर से कूदें</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Forum Section -->
+        <section id="forum" class="py-16">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-6 text-center">कम्युनिटी फोरम</h2>
+                <p class="text-apple-gray text-center mb-12 max-w-2xl mx-auto">अन्य Rumble Rush खिलाड़ियों के साथ अपने अनुभव, रणनीतियाँ और प्रतिक्रिया साझा करें। पंजीकरण की आवश्यकता नहीं है!</p>
+                
+                <div class="max-w-3xl mx-auto">
+                    <!-- Comment Form -->
+                    <div class="bg-white rounded-2xl shadow-sm p-6 mb-8">
+                        <h3 class="text-xl font-semibold mb-4">एक टिप्पणी पोस्ट करें</h3>
+                        <form id="comment-form">
+                            <div class="mb-4">
+                                <label for="name" class="block text-sm font-medium text-apple-gray mb-1">नाम (वैकल्पिक)</label>
+                                <input type="text" id="name" class="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-apple-blue focus:outline-none">
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="comment" class="block text-sm font-medium text-apple-gray mb-1">आपकी टिप्पणी *</label>
+                                <textarea id="comment" rows="4" required class="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-apple-blue focus:outline-none"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn-primary text-white font-semibold py-3 px-6 rounded-xl">
+                                टिप्पणी पोस्ट करें
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <!-- Comments List -->
+                    <div id="comments-container">
+                        <h3 class="text-xl font-semibold mb-6">हाल की टिप्पणियाँ</h3>
+                        <div id="comments-list">
+                            <!-- टिप्पणियाँ यहाँ लोड होंगी -->
+                        </div>
+                        
+                        <div id="load-more-container" class="text-center mt-8 hidden">
+                            <button id="load-more" class="text-apple-blue font-semibold">
+                                और टिप्पणियाँ लोड करें <i class="fas fa-chevron-down ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-apple-light-gray py-12 border-t border-gray-200">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center">
+                        <img src="https://onlinegamedayday.com/Rumble%20Rush1.png" alt="Rumble Rush लोगो" class="h-8 w-8 mr-2 rounded">
+                        <span class="logo text-xl">Rumble Rush</span>
+                    </div>
+                    <p class="text-apple-gray text-sm mt-2">© 2023 Rumble Rush. सर्वाधिकार सुरक्षित।</p>
+                </div>
+                
+                <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8 text-center md:text-left">
+                    <a href="https://rumble-rush.com/privacy" class="text-apple-gray hover:text-apple-blue transition-colors">गोपनीयता नीति</a>
+                    <a href="https://rumble-rush.com/terms" class="text-apple-gray hover:text-apple-blue transition-colors">सेवा की शर्तें</a>
+                    <a href="mailto:support@rumble-rush.com" class="text-apple-gray hover:text-apple-blue transition-colors">हमसे संपर्क करें</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // localStorage के साथ सरल फोरम कार्यक्षमता
+        document.addEventListener('DOMContentLoaded', function() {
+            const commentForm = document.getElementById('comment-form');
+            const commentsList = document.getElementById('comments-list');
+            const loadMoreContainer = document.getElementById('load-more-container');
+            const loadMoreButton = document.getElementById('load-more');
+            
+            // अपशब्द फिल्टर (सरलीकृत उदाहरण)
+            const badWords = ['गाली1', 'गाली2', 'अपमान', 'नफरत', 'मूर्ख', 'बेवकूफ']; // आवश्यकतानुसार इस सूची का विस्तार करें
+            
+            // अपशब्दों की जांच के लिए फ़ंक्शन
+            function containsBadWords(text) {
+                return badWords.some(word => text.toLowerCase().includes(word));
+            }
+            
+            // टिप्पणियाँ लोड करने का फ़ंक्शन
+            function loadComments(limit = 50, offset = 0) {
+                let comments = JSON.parse(localStorage.getItem('rumble-rush-comments') || '[]');
+                
+                // नवीनतम पहले दिखाने के लिए उलटा करें
+                comments.reverse();
+                
+                // सीमा और ऑफसेट लागू करें
+                const displayedComments = comments.slice(offset, offset + limit);
+                
+                // यदि शुरुआत से लोड कर रहे हैं तो टिप्पणी सूची साफ़ करें
+                if (offset === 0) {
+                    commentsList.innerHTML = '';
+                }
+                
+                if (comments.length === 0) {
+                    commentsList.innerHTML = '<p class="text-apple-gray text-center py-8">अभी तक कोई टिप्पणी नहीं है। अपने विचार साझा करने वाले पहले व्यक्ति बनें!</p>';
+                    return;
+                }
+                
+                displayedComments.forEach(comment => {
+                    const commentElement = document.createElement('div');
+                    commentElement.className = 'comment-box bg-white rounded-2xl shadow-sm p-6 mb-6';
+                    commentElement.innerHTML = `
+                        <div class="flex justify-between items-start mb-3">
+                            <h4 class="font-semibold">${comment.name || 'अनाम'}</h4>
+                            <span class="text-sm text-apple-gray">${new Date(comment.timestamp).toLocaleDateString('hi-IN')}</span>
+                        </div>
+                        <p class="text-apple-gray mb-4">${comment.text}</p>
+                        <button class="reply-btn text-sm text-apple-blue font-semibold">जवाब दें</button>
+                        
+                        <div class="reply-form mt-4 hidden">
+                            <textarea class="w-full p-3 border border-gray-200 rounded-xl mb-2" placeholder="अपना जवाब लिखें..."></textarea>
+                            <button class="submit-reply bg-apple-blue text-white font-semibold py-2 px-4 rounded-xl text-sm">जवाब पोस्ट करें</button>
+                        </div>
+                    `;
+                    
+                    commentsList.appendChild(commentElement);
+                });
+                
+                // यदि और टिप्पणियाँ हैं तो "और लोड करें" बटन दिखाएं
+                if (comments.length > offset + limit) {
+                    loadMoreContainer.classList.remove('hidden');
+                    loadMoreButton.dataset.offset = offset + limit;
+                } else {
+                    loadMoreContainer.classList.add('hidden');
+                }
+            }
+            
+            // टिप्पणी फॉर्म सबमिशन को संभालें
+            commentForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const nameInput = document.getElementById('name');
+                const commentInput = document.getElementById('comment');
+                
+                const name = nameInput.value.trim();
+                const text = commentInput.value.trim();
+                
+                if (!text) {
+                    alert('कृपया एक टिप्पणी दर्ज करें');
+                    return;
+                }
+                
+                // अपशब्दों की जांच करें
+                if (containsBadWords(text) || (name && containsBadWords(name))) {
+                    alert('आपकी टिप्पणी में अनुचित भाषा है। कृपया अपना संदेश संशोधित करें।');
+                    return;
+                }
+                
+                // टिप्पणी ऑब्जेक्ट बनाएं
+                const comment = {
+                    name: name || undefined,
+                    text: text,
+                    timestamp: new Date().toISOString()
+                };
+                
+                // localStorage में सहेजें
+                let comments = JSON.parse(localStorage.getItem('rumble-rush-comments') || '[]');
+                comments.push(comment);
+                localStorage.setItem('rumble-rush-comments', JSON.stringify(comments));
+                
+                // फॉर्म साफ़ करें
+                nameInput.value = '';
+                commentInput.value = '';
+                
+                // टिप्पणियाँ पुनः लोड करें
+                loadComments();
+            });
+            
+            // जवाब बटनों को संभालें (प्रतिनिधित्व)
+            commentsList.addEventListener('click', function(e) {
+                if (e.target.classList.contains('reply-btn')) {
+                    const replyForm = e.target.nextElementSibling;
+                    replyForm.classList.toggle('hidden');
+                }
+                
+                if (e.target.classList.contains('submit-reply')) {
+                    // वास्तविक एप्लिकेशन में, यह सर्वर पर सबमिट किया जाएगा
+                    alert('पूर्ण कार्यान्वयन में जवाब सर्वर पर संग्रहीत किए जाएंगे। यह एक फ्रंटएंड डेमो है।');
+                    e.target.closest('.reply-form').classList.add('hidden');
+                }
+            });
+            
+            // "और लोड करें" बटन को संभालें
+            loadMoreButton.addEventListener('click', function() {
+                const offset = parseInt(this.dataset.offset || '0');
+                loadComments(50, offset);
+            });
+            
+            // टिप्पणियों का प्रारंभिक लोड
+            loadComments();
+        });
+    </script>
+</body>
+</html>
